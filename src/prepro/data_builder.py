@@ -207,7 +207,7 @@ def hashhex(s):
 class BertData():
     def __init__(self, args):
         self.args = args
-        self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
+        self.tokenizer = BertTokenizer.from_pretrained('/home/t-kasanishi/PreSumm-scibert/models/scibert_scivocab_uncased/vocab.txt', do_lower_case=True)
 
         self.sep_token = '[SEP]'
         self.cls_token = '[CLS]'
