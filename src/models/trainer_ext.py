@@ -249,6 +249,9 @@ class Trainer(object):
                         else:
                             sent_scores, mask = self.model(src, segs, clss, mask, mask_cls)
 
+                            if sent_scores.dim() == 1:  # 変更
+                                sent_scores = torch.unsqueeze(sent_scores, 0)
+
                             loss = self.loss(sent_scores, labels.float())
                             loss = (loss * mask.float()).sum()
                             batch_stats = Statistics(float(loss.cpu().data.numpy()), len(labels))
