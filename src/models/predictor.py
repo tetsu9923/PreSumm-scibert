@@ -327,10 +327,6 @@ class Translator(object):
             select_indices = batch_index.view(-1)
 
             # Append last prediction.
-            print("select_indices.shape: {}".format(select_indices.shape))
-            print("select_indices: {}".format(select_indices))
-            print("alive_seq.shape: {}".format(alive_seq.shape))
-            print("alive_seq: {}".format(alive_seq))
             alive_seq = torch.cat(
                 [alive_seq.index_select(0, select_indices),
                  topk_ids.view(-1, 1)], -1)
